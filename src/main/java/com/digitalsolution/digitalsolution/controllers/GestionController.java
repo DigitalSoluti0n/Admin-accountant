@@ -10,7 +10,7 @@ public class GestionController {
     @RequestMapping("/")
     public String login(Model model){
 
-        model.addAttribute("saludo", "BIENVENIDOS A DigitalSoluti0n");
+        model.addAttribute("saludo", "DigitalSoluti0n");
         return "index";
     }
 
