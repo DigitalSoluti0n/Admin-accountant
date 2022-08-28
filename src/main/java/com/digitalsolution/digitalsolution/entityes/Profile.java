@@ -19,9 +19,9 @@ import java.util.Date;
 public class Profile {
 
     @Id
-    @Column(name = "id")
+    @Column(name = "cedula")
     @Getter@Setter
-    private String id;
+    private long cedula;
 
     @Column(name = "image")
     @Getter@Setter
@@ -31,17 +31,17 @@ public class Profile {
     @Getter@Setter
     private String phone;
 
-    @Column(name = "user")
+    @Column(name = "usuario")
     @Getter@Setter
-    private long user;
+    private long usuario;
 
-    @Column(name = "createdAt")
+    @Column(name = "createdat")
     @Getter@Setter
-    private LocalDate createdAt;
+    private LocalDate createdat;
 
-    @Column(name = "updatedAt")
+    @Column(name = "updatedat")
     @Getter@Setter
-    private LocalDate updatedAt;
+    private LocalDate updatedat;
 
 
 }

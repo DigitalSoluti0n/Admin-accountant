@@ -32,7 +32,7 @@ public class Employee {
 
     @Column(name = "profile")
     @Getter @Setter
-    private Profile profile;
+    private long profile;
 
     @Column(name = "role")
     @Getter @Setter
@@ -46,13 +46,13 @@ public class Employee {
     @Getter @Setter
     private long transactions;
 
-    @Column(name = "updatedAt")
+    @Column(name = "updatedat")
     @Getter @Setter
-    private LocalDate updatedAt;
+    private LocalDate updatedat;
 
-    @Column(name = "createdAt")
+    @Column(name = "createdat")
     @Getter @Setter
-    private LocalDate createdAt;
+    private LocalDate createdat;
 
 
 }

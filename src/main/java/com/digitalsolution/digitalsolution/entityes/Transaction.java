@@ -19,9 +19,9 @@ import java.util.Date;
 public class Transaction {
 
     @Id
-    @Column(name = "id")
+    @Column(name = "idm")
     @Getter @Setter
-    private long id;
+    private long idm;
 
     @Column(name = "concept")
     @Getter @Setter
@@ -35,21 +35,21 @@ public class Transaction {
     @Getter @Setter
     private String typeAmount;
 
-    @Column(name = "user")
+    @Column(name = "usuario")
     @Getter @Setter
-    private long user;
+    private long usuario;
 
     @Column(name = "enterprise")
     @Getter @Setter
     private long enterprise;
 
-    @Column(name = "createdAt")
+    @Column(name = "createdat")
     @Getter @Setter
-    private LocalDate createdAt;
+    private LocalDate createdat;
 
-    @Column(name = "updatedAt")
+    @Column(name = "updatedat")
     @Getter @Setter
-    private LocalDate updatedAt;
+    private LocalDate updatedat;
 
 }
 

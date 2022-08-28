@@ -39,12 +39,12 @@ public class Enterprise {
     @Column(name = "transactions")
     @Getter @Setter
     private long transactions;
-    @Column(name = "createdAt")
+    @Column(name = "createdat")
     @Getter @Setter
-    private LocalDate createdAt;
-    @Column(name = "updatedAt")
+    private LocalDate createdat;
+    @Column(name = "updatedat")
     @Getter @Setter
-    private LocalDate updatedAt;
+    private LocalDate updatedat;
 }
 
 
