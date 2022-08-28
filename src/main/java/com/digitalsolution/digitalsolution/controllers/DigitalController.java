@@ -5,13 +5,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class GestionController {
+public class DigitalController {
 
     @RequestMapping("/")
-    public String login(Model model){
+    public String inicio(Model model){
 
         model.addAttribute("saludo", "DigitalSoluti0n");
         return "index";
     }
-
 }

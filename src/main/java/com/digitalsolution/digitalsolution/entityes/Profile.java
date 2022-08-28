@@ -1,4 +1,4 @@
-package com.digitalsolution.digitalsolution.models;
+package com.digitalsolution.digitalsolution.entityes;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

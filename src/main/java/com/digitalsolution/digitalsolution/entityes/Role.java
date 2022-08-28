@@ -1,4 +1,4 @@
-package com.digitalsolution.digitalsolution.models;
+package com.digitalsolution.digitalsolution.entityes;
 
 public enum Role {
     administrator,

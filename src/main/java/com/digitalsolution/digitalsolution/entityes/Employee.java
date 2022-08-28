@@ -1,4 +1,4 @@
-package com.digitalsolution.digitalsolution.models;
+package com.digitalsolution.digitalsolution.entityes;
 
 import java.util.Date;
 import lombok.AllArgsConstructor;
@@ -10,7 +10,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Employee {
     @Getter@Setter
-    private long id;
+    private long cedula;
     @Getter@Setter
     private String name;
     @Getter@Setter
