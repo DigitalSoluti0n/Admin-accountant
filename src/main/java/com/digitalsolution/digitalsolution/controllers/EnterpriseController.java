@@ -6,6 +6,7 @@ import com.digitalsolution.digitalsolution.services.EnterpriseService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class EnterpriseController {
@@ -37,11 +38,13 @@ public class EnterpriseController {
 
     /**
      * El sistema permite consultar una sola empresa
+     *
      * @param id
      */
     @GetMapping("/enterprises/{id}")
-    public void obtenerInterprise(@PathVariable("id") Long id){
+    public Optional<Enterprise> obtenerInterprise(@PathVariable("id") Long id){
 
+        return this.enterpriseService.obtenerUnaEnterprise(id);
     }
 
     /**

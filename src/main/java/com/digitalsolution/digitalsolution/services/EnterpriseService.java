@@ -55,4 +55,12 @@ public class EnterpriseService {
         return true;
     }
 
+    /**
+     * El sistema permite consultar una sola empresa
+     */
+    public Optional<Enterprise> obtenerUnaEnterprise(Long id){
+
+        return this.enterpriseRepository.findById(id);
+    }
+
 }
