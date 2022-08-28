@@ -19,7 +19,7 @@ public class EnterpriseController {
   }
 
     /**
-     * El sistema permite consultar todas las empresas
+     * El sistema permite consultar todas las empresas 
      */
     @GetMapping("/enterprises")
     public List<Enterprise> obtenerEnterprise(){
