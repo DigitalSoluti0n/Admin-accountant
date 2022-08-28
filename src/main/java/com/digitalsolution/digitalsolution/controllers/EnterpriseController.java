@@ -52,9 +52,9 @@ public class EnterpriseController {
      * @param id
      */
     @PatchMapping("/enterprises/{id}")
-    public String actualizarInterprise(@PathVariable("id") Long id){
+    public String actualizarInterprise(@RequestBody Enterprise enterprise, @PathVariable("id") Long id){
 
-        if (this.enterpriseService.actualizarEnterprise(id)){
+        if (this.enterpriseService.actualizarEnterprise(enterprise, id)){
             return "correcto";
         }
 
