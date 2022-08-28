@@ -36,7 +36,7 @@ public class Employee {
 
     @Column(name = "role")
     @Getter @Setter
-    private Role role;
+    private String role;
 
     @Column(name = "enterprise")
     @Getter @Setter

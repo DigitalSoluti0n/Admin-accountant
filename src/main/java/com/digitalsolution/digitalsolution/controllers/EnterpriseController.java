@@ -72,6 +72,13 @@ public class EnterpriseController {
         return this.enterpriseService.eliminarEnterprise(id);
     }
 
+    /**
+     * El sistema permite consultar una sola empresa por documento
+     */
+    @GetMapping("/enterpriseDocument/{document}")
+    public List<Enterprise> consultarEnterpriseDocument(@PathVariable("document") String document){
+        return this.enterpriseService.obtenerEnterpriseDocument(document);
+    }
 
 
 }
