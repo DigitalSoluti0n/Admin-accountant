@@ -10,7 +10,7 @@ public class DigitalController {
     @RequestMapping("/")
     public String inicio(Model model){
 
-        model.addAttribute("saludo", "DigitalSoluti0n_tre");
+        model.addAttribute("saludo", "DigitalSoluti0n");
         return "index";
     }
 }
