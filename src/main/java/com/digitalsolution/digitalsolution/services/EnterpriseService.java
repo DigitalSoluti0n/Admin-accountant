@@ -5,6 +5,7 @@ import com.digitalsolution.digitalsolution.entityes.Enterprise;
 import com.digitalsolution.digitalsolution.repositories.EnterpriseRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -58,6 +59,7 @@ public class EnterpriseService {
      * El sistema permite eliminar una empresa
      */
     public boolean eliminarEnterprise(Long id){
+
         this.enterpriseRepository.deleteById(id);
 
         return true;
@@ -70,6 +72,23 @@ public class EnterpriseService {
 
         return this.enterpriseRepository.findById(id);
     }
+
+    //Método de prueba para consultar a determinada columna
+
+    /**
+     * El sistema permite consultar una sola empresa por documento
+     */
+    public List<Enterprise> obtenerEnterpriseDocument(String documet){
+
+        /*
+        List<String> datos = new ArrayList<>();
+
+        datos.add(enterpriseRepository.findByIdEnter(documet).get(0).getName());
+        return datos;
+        */
+        return this.enterpriseRepository.findByIdEnter(documet);
+    }
+
 
 
 }
