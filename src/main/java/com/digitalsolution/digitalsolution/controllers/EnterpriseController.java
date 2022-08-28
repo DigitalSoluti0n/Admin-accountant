@@ -48,19 +48,24 @@ public class EnterpriseController {
      * El sistema permite editar una empresa
      * @param id
      */
-    @PatchMapping("/enterprises/{nit}")
-    public boolean actualizarInterprise(@PathVariable("nit") Long nit){
+    @PatchMapping("/enterprises/{id}")
+    public String actualizarInterprise(@PathVariable("id") Long id){
 
-       return this.enterpriseService.actualizarEnterprise(nit);
+        if (this.enterpriseService.actualizarEnterprise(id)){
+            return "correcto";
+        }
+
+       return "incorrecto";
     }
 
     /**
      * El sistema permite eliminar una empresa
      * @param id
      */
-    @DeleteMapping("/enterprises/{id}")
-    public void eliminarInterprise(@PathVariable("id") Long id){
+    @DeleteMapping("/enterprise/{id}")
+    public boolean eliminarInterprise(@PathVariable("id") Long id){
 
+        return this.enterpriseService.eliminarEnterprise(id);
     }
 
 

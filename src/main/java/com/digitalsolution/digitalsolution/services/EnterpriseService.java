@@ -34,11 +34,11 @@ public class EnterpriseService {
     /**
      * El sistema permite editar una empresa
      */
-    public boolean actualizarEnterprise(Long nit){
-        Optional<Enterprise> enterprise =     this.enterpriseRepository.findById(nit);//buscar
+    public boolean actualizarEnterprise(Long id){
+        Optional<Enterprise> enterprise =     this.enterpriseRepository.findById(id);//buscar
 
         if (enterprise.isPresent()){
-            enterprise.get().setName("prueba de actualizar");
+            enterprise.get().setName("prueba de actualizar");//datos a actualizar
             this.enterpriseRepository.save(enterprise.get());
             return  true;
         }
@@ -46,5 +46,13 @@ public class EnterpriseService {
         return false;
     }
 
+    /**
+     * El sistema permite eliminar una empresa
+     */
+    public boolean eliminarEnterprise(Long id){
+        this.enterpriseRepository.deleteById(id);
+
+        return true;
+    }
 
 }
