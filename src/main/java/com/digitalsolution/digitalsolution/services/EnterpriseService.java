@@ -34,12 +34,20 @@ public class EnterpriseService {
     /**
      * El sistema permite editar una empresa
      */
-    public boolean actualizarEnterprise(Long id){
-        Optional<Enterprise> enterprise =     this.enterpriseRepository.findById(id);//buscar
+    public boolean actualizarEnterprise(Enterprise enterprise, Long id){
+        Optional<Enterprise> enterpriseBuscar =     this.enterpriseRepository.findById(id);//buscar
 
-        if (enterprise.isPresent()){
-            enterprise.get().setName("prueba de actualizar");//datos a actualizar
-            this.enterpriseRepository.save(enterprise.get());
+        if (enterpriseBuscar.isPresent()){
+            enterpriseBuscar.get().setName(enterprise.getName());
+            enterpriseBuscar.get().setDocument(enterprise.getDocument());
+            enterpriseBuscar.get().setPhone(enterprise.getPhone());
+            enterpriseBuscar.get().setAddress(enterprise.getAddress());
+            enterpriseBuscar.get().setUsers(enterprise.getUsers());
+            enterpriseBuscar.get().setTransactions(enterprise.getTransactions());
+            enterpriseBuscar.get().setCreatedat(enterprise.getCreatedat());
+            enterpriseBuscar.get().setUpdatedat(enterprise.getUpdatedat());
+
+            this.enterpriseRepository.save(enterpriseBuscar.get());
             return  true;
         }
 
