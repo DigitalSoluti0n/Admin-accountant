@@ -6,6 +6,7 @@ import com.digitalsolution.digitalsolution.repositories.EnterpriseRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EnterpriseService {
@@ -28,6 +29,21 @@ public class EnterpriseService {
      */
     public Enterprise crearEnterprise(Enterprise enterprise){
         return this.enterpriseRepository.save(enterprise);
+    }
+
+    /**
+     * El sistema permite editar una empresa
+     */
+    public boolean actualizarEnterprise(Long nit){
+        Optional<Enterprise> enterprise =     this.enterpriseRepository.findById(nit);//buscar
+
+        if (enterprise.isPresent()){
+            enterprise.get().setName("prueba de actualizar");
+            this.enterpriseRepository.save(enterprise.get());
+            return  true;
+        }
+
+        return false;
     }
 
 

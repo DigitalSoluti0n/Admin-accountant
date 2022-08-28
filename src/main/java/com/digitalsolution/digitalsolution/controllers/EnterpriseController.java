@@ -39,7 +39,7 @@ public class EnterpriseController {
      * El sistema permite consultar una sola empresa
      * @param id
      */
-    @GetMapping("/enterprises/{id}")
+    @GetMapping("/enterprise/{id}")
     public void obtenerInterprise(@PathVariable("id") Long id){
 
     }
@@ -48,9 +48,10 @@ public class EnterpriseController {
      * El sistema permite editar una empresa
      * @param id
      */
-    @PatchMapping("/enterprises/{id}")
-    public void actualizarInterprise(@PathVariable("id") Long id){
+    @PatchMapping("/enterprises/{nit}")
+    public boolean actualizarInterprise(@PathVariable("nit") Long nit){
 
+       return this.enterpriseService.actualizarEnterprise(nit);
     }
 
     /**
