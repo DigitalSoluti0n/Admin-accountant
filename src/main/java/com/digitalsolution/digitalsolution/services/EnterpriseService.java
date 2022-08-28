@@ -59,6 +59,7 @@ public class EnterpriseService {
      * El sistema permite eliminar una empresa
      */
     public boolean eliminarEnterprise(Long id){
+
         this.enterpriseRepository.deleteById(id);
 
         return true;

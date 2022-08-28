@@ -17,7 +17,7 @@ public interface EnterpriseRepository extends JpaRepository<Enterprise, Long> {
      * @param document
      * @return
      */
-    @Query("FROM Enterprise e WHERE document = :document")
+    @Query("FROM Enterprise WHERE document = :document")
     List<Enterprise> findByIdEnter(@Param("document") String document);
 
 
