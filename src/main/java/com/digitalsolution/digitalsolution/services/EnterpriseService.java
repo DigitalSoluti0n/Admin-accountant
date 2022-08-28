@@ -23,5 +23,12 @@ public class EnterpriseService {
         return this.enterpriseRepository.findAll();
     }
 
+    /**
+     * El sistema permite crear una empresa
+     */
+    public Enterprise crearEnterprise(Enterprise enterprise){
+        return this.enterpriseRepository.save(enterprise);
+    }
+
 
 }
