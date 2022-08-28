@@ -39,7 +39,7 @@ public class EnterpriseController {
      * El sistema permite consultar una sola empresa
      * @param id
      */
-    @GetMapping("/enterprise/{id}")
+    @GetMapping("/enterprises/{id}")
     public void obtenerInterprise(@PathVariable("id") Long id){
 
     }
@@ -62,7 +62,7 @@ public class EnterpriseController {
      * El sistema permite eliminar una empresa
      * @param id
      */
-    @DeleteMapping("/enterprise/{id}")
+    @DeleteMapping("/enterprises/{id}")
     public boolean eliminarInterprise(@PathVariable("id") Long id){
 
         return this.enterpriseService.eliminarEnterprise(id);
