@@ -26,9 +26,13 @@ public class TransactionService {
     /**
      * El sistema permite crear una transacción
      */
-    public Transaction crearTransaction(Transaction transaction) {
+    public boolean crearTransaction(Transaction transaction) {
 
-        return this.transactionRepository.save(transaction);
+if (!this.transactionRepository.findById(transaction.getIdm()).isPresent()){
+    this.transactionRepository.save(transaction);
+    return true;
+}
+        return false;
     }
 
     /**
@@ -37,6 +41,8 @@ public class TransactionService {
      *
      */
     public Optional<Transaction> obtenerTransaction(Long idm) {
+
+
 
         return  this.transactionRepository.findById(idm);
 
@@ -71,8 +77,12 @@ public class TransactionService {
      *
      */
     public boolean eliminarTransaction(Long idm) {
-        this.transactionRepository.deleteById(idm);
-        return true;
+        if (this.transactionRepository.findById(idm).isPresent()){
+            this.transactionRepository.deleteById(idm);
+            return true;
+        }
+
+        return false;
     }
 
     /**

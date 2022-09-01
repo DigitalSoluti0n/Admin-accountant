@@ -40,9 +40,14 @@ public class EmployeeService {
      *
      * @return
      */
-    public Employee crearEmployee(Employee employee){
+    public boolean crearEmployee(Employee employee){
 
-        return this.employeeRepository.save(employee);
+        if (!this.employeeRepository.findById(employee.getCedula()).isPresent()){
+            this.employeeRepository.save(employee);
+            return true;
+        }
+
+        return false;
     }
 
     /**
@@ -51,22 +56,26 @@ public class EmployeeService {
      * @return
      */
     public boolean editarEmployee(Employee employee, long cedula){
+
         Optional<Employee> datEmployee = this.employeeRepository.findById(cedula);
 
-        if (datEmployee.isPresent()){
+            if (datEmployee.isPresent()){
 
-            datEmployee.get().setName(employee.getName());
-            datEmployee.get().setEmail(employee.getEmail());
-            datEmployee.get().setProfile(employee.getProfile());
-            datEmployee.get().setRole(employee.getRole());
-            datEmployee.get().setEnterprise(employee.getEnterprise());
-            datEmployee.get().setTransactions(employee.getTransactions());
-            datEmployee.get().setUpdatedat(employee.getUpdatedat());
-            datEmployee.get().setCreatedat(employee.getCreatedat());
+                datEmployee.get().setName(employee.getName());
+                datEmployee.get().setEmail(employee.getEmail());
+                datEmployee.get().setProfile(employee.getProfile());
+                datEmployee.get().setRole(employee.getRole());
+                datEmployee.get().setEnterprise(employee.getEnterprise());
+                datEmployee.get().setTransactions(employee.getTransactions());
+                datEmployee.get().setUpdatedat(employee.getUpdatedat());
+                datEmployee.get().setCreatedat(employee.getCreatedat());
 
-            this.employeeRepository.save(datEmployee.get());
-            return true;
-        }
+                this.employeeRepository.save(datEmployee.get());
+                return true;
+            }
+
+
+
         return false;
     }
 
@@ -76,8 +85,11 @@ public class EmployeeService {
      */
     public boolean eliminarEmployee(long cedula){
 
-        this.employeeRepository.deleteById(cedula);
+            if (this.employeeRepository.findById(cedula).isPresent()){
+                this.employeeRepository.deleteById(cedula);
+                return true;
+            }
 
-        return true;
+        return false;
     }
 }
