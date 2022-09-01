@@ -31,7 +31,8 @@ public class EmployeeController {
          * @return
          */
         @PostMapping("/users")
-        public Employee agregarEmployee(@RequestBody Employee employee){
+        public boolean agregarEmployee(@RequestBody Employee employee){
+
         return this.employeeService.crearEmployee(employee);
         }
 

@@ -31,7 +31,7 @@ public class EnterpriseController {
     * El sistema permite crear una empresa
     */
    @PostMapping("/enterprises")
-    public Enterprise agregarEnterprise(@RequestBody Enterprise enterprise){
+    public boolean agregarEnterprise(@RequestBody Enterprise enterprise){
 
        return this.enterpriseService.crearEnterprise(enterprise);
     }

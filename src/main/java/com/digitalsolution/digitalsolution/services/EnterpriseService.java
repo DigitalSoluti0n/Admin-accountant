@@ -5,7 +5,6 @@ import com.digitalsolution.digitalsolution.entityes.Enterprise;
 import com.digitalsolution.digitalsolution.repositories.EnterpriseRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,8 +27,14 @@ public class EnterpriseService {
     /**
      * El sistema permite crear una empresa
      */
-    public Enterprise crearEnterprise(Enterprise enterprise){
-        return this.enterpriseRepository.save(enterprise);
+    public boolean crearEnterprise(Enterprise enterprise){
+
+        if (!this.enterpriseRepository.findById(enterprise.getNit()).isPresent()){
+            this.enterpriseRepository.save(enterprise);
+            return true;
+        }
+
+        return false;
     }
 
     /**
@@ -59,16 +64,21 @@ public class EnterpriseService {
      * El sistema permite eliminar una empresa
      */
     public boolean eliminarEnterprise(Long id){
+        if (this.enterpriseRepository.findById(id).isPresent()){
+            this.enterpriseRepository.deleteById(id);
+            return true;
+        }
 
-        this.enterpriseRepository.deleteById(id);
 
-        return true;
+        return false;
     }
 
     /**
      * El sistema permite consultar una sola empresa
      */
     public Optional<Enterprise> obtenerUnaEnterprise(Long id){
+
+
 
         return this.enterpriseRepository.findById(id);
     }

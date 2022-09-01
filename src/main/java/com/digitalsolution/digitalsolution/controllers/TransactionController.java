@@ -28,7 +28,7 @@ public class TransactionController {
      * El sistema permite crear una transacción
      */
     @PostMapping("/transaction")
-    public Transaction agregarTransaction(@RequestBody Transaction transaction){
+    public boolean agregarTransaction(@RequestBody Transaction transaction){
 
         return this.transactionService.crearTransaction(transaction);
     }
