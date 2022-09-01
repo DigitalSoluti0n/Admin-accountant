@@ -71,8 +71,7 @@ public class EnterpriseController {
         return this.enterpriseService.eliminarEnterprise(id);
     }
 
-<<<<<<< HEAD
-=======
+
     /**
      * El sistema permite consultar una sola empresa por documento
      */
@@ -81,6 +80,4 @@ public class EnterpriseController {
         return this.enterpriseService.obtenerEnterpriseDocument(document);
     }
 
-
->>>>>>> development
 }
