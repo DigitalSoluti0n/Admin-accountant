@@ -15,7 +15,11 @@ public class DigitalsolutionApplication {
 		Employee employee = new Employee();
 		Enterprise enterprise = new Enterprise();
 		Transaction transaction = new Transaction();
-
+		
+		employee.setCedula(1023645098);
+		enterprise.setNit(123589452);
+		transaction.setIdm(20054);
+			
 		System.out.println(employee.getCedula());
 		System.out.println(enterprise.getNit());
 		System.out.println(transaction.getIdm());
