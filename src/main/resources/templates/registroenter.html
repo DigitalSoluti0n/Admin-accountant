@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Registro</title>
+</head>
+<body>
+<h1>Empresa</h1>
+
+<form th:action="" th:method="post" th:object="">
+    <label >NIT</label>
+    <input th:field="*{nit}" type="number">
+    <label >NAME</label>
+    <input th:field="*{name}" type="text">
+    <label >DOCUMENT</label>
+    <input th:field="*{document}" type="text">
+    <label >PHONE</label>
+    <input th:field="*{phone}" type="text">
+    <label >ADDRESS</label>
+    <input th:field="*{address}" type="text">
+    <button type="submit">Agregar</button>
+</form>
+
+
+</body>
+</html>
