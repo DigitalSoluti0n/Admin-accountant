@@ -66,10 +66,12 @@ public class EmployeeService {
                 datEmployee.get().setProfile(employee.getProfile());
                 datEmployee.get().setRole(employee.getRole());
                 datEmployee.get().setEnterprise(employee.getEnterprise());
-                datEmployee.get().setTransactions(employee.getTransactions());
+               /* datEmployee.get().setTransactions(employee.getTransactions());
                 datEmployee.get().setUpdatedat(employee.getUpdatedat());
                 datEmployee.get().setCreatedat(employee.getCreatedat());
 
+
+                */
                 this.employeeRepository.save(datEmployee.get());
                 return true;
             }

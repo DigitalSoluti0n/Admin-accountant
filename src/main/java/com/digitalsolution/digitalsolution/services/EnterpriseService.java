@@ -48,11 +48,13 @@ public class EnterpriseService {
             enterpriseBuscar.get().setDocument(enterprise.getDocument());
             enterpriseBuscar.get().setPhone(enterprise.getPhone());
             enterpriseBuscar.get().setAddress(enterprise.getAddress());
-            enterpriseBuscar.get().setUsers(enterprise.getUsers());
+        /*    enterpriseBuscar.get().setUsers(enterprise.getUsers());
             enterpriseBuscar.get().setTransactions(enterprise.getTransactions());
             enterpriseBuscar.get().setCreatedat(enterprise.getCreatedat());
             enterpriseBuscar.get().setUpdatedat(enterprise.getUpdatedat());
 
+
+         */
             this.enterpriseRepository.save(enterpriseBuscar.get());
             return  true;
         }
