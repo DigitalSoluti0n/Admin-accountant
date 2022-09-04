@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Create Transaction</title>
+</head>
+<body>
+
+<form th:action="@{/transaction}" th:method="post" th:object="${transac}">
+
+    <label >ID</label>
+    <input th:field="*{idm}" type="number">
+    <label >CONCEPT</label>
+    <input th:field="*{concept}" type="text">
+    <label >AMOUNT</label>
+    <input th:field="*{amount}" type="number">
+    <label >TYPE AMOUNT</label>
+    <input th:field="*{typeAmount}" type="text">
+    <label >USER</label>
+    <input th:field="*{usuario}" type="number">
+    <label >ENTERPRISE</label>
+    <input th:field="*{enterprise}" type="number">
+    <label >CREATE DATE</label>
+    <input th:field="*{createdat}" type="date">
+    <label >UPDATE DATE</label>
+    <input th:field="*{updatedat}" type="date">
+
+    <button type="submit">AGREGAR</button>
+
+</form>
+
+</body>
+</html>

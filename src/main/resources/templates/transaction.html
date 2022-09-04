@@ -1,0 +1,41 @@
+<!doctype html >
+<html lang="es"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Transaction Enterprise</title>
+</head>
+<body>
+
+<table>
+    <thead>
+    <tr>
+        <td>ID</td>
+        <td>Concept</td>
+        <td>Amount</td>
+        <td>Type Amount</td>
+        <td>User</td>
+        <td>Enterprise</td>
+        <td>Create Date</td>
+        <td>Update Date</td>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each ="enterpris : ${enterprise}" >
+        <td th:text="${enterpris.idm}"></td>
+        <td th:text="${enterpris.concept}"></td>
+        <td th:text="${enterpris.amount}"></td>
+        <td th:text="${enterpris.typeAmount}"></td>
+        <td th:text="${enterpris.usuario}"></td>
+        <td th:text="${enterpris.enterprise}"></td>
+        <td th:text="${enterpris.createdat}"></td>
+        <td th:text="${enterpris.updatedat}" ></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

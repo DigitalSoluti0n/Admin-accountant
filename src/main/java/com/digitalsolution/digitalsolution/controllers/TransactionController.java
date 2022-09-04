@@ -4,7 +4,10 @@ package com.digitalsolution.digitalsolution.controllers;
 import com.digitalsolution.digitalsolution.entityes.Transaction;
 import com.digitalsolution.digitalsolution.services.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
 import java.util.Optional;
@@ -27,10 +30,13 @@ public class TransactionController {
     /**
      * El sistema permite crear una transacción
      */
-    @PostMapping("/transaction")
-    public boolean agregarTransaction(@RequestBody Transaction transaction){
+    @PostMapping("/transaction")//REQUESTBODY = MODELATTRIBUTE
+    public RedirectView agregarTransaction(@ModelAttribute @DateTimeFormat(pattern = "YYYY-MM-DD") Transaction transaction, Model model){
+        model.addAttribute(transaction);
+        this.transactionService.crearTransaction(transaction);
 
-        return this.transactionService.crearTransaction(transaction);
+        return new RedirectView("/transacti");
+
     }
 
     /**
@@ -76,7 +82,7 @@ public class TransactionController {
         return this.transactionService.obtenerTransactionEnterprise(enterprise);
     }
 
-    
+
 
 
 }
