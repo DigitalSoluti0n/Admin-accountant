@@ -3,7 +3,9 @@ package com.digitalsolution.digitalsolution.controllers;
 import com.digitalsolution.digitalsolution.entityes.Employee;
 import com.digitalsolution.digitalsolution.services.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
 import java.util.Optional;
@@ -46,6 +48,7 @@ public class EmployeeController {
 
          return this.employeeService.buscarEmployee(cedula);
         }
+
 
         /**
          * El sistema permite editar un usuario

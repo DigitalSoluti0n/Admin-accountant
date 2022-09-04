@@ -9,15 +9,16 @@
 </head>
 <body>
 
-<form th:action="" th:method="" th:object="">
+<form th:action="@{/loginveri}" th:method="get" th:object="${inic}">
 
     <label>cedula</label>
-    <input type="number">
+    <input th:field="*{cedula}" type="number">
     <label>contraseña</label>
-    <input type="text">
-    <button type="submit">Iniciar Sesión</button>
+    <input th:field="*{contra}" type="text">
+    <button type="submit">iniciar sesion </button>
     
 </form>
+
 
 </body>
 </html>
