@@ -50,22 +50,33 @@ public class FrontController {
     }
 
     @GetMapping( "/login")//es para login
-    public String iniciarSesion( Model  model){
+    public String iniciarSesion( ){
 
-            model.addAttribute("inic", new Employee());
+           // model.addAttribute("inic", new Employee());
 
         return "login";
     }
 
 
-    @GetMapping("/loginveri")
-    public String iniciarConten(@ModelAttribute Employee employee, Model model){
+    @PostMapping("/login")
+    public String iniciarConten(@ModelAttribute(name = "inic") Employee employee, Model model){
+            Optional<Employee> employee1 = this.employeeService.buscarEmployee(employee.getCedula());
 
-        if (this.employeeService.buscarEmployee(employee.getCedula()).isPresent()){
-            model.addAttribute("hola", employee.getCedula());
-            System.out.println(employee.getCedula());
-            return "index";
-        }
-    return "error";
+        if (employee1.isPresent()){
+                if (employee1.get().getContra().equals(employee.getContra())){
+                    model.addAttribute("hola", employee.getCedula());
+                    System.out.println(employee.getCedula());
+                    return "index";
+                }else{
+                    model.addAttribute("error", "incorrect dat");
+                    return "login";
+                }
+
+        }else{
+                model.addAttribute("error", "incorrect dat");
+                return "login";
+            }
+
+
     }
 }
