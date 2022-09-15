@@ -10,7 +10,7 @@
 <body>
 <h1>Empresa</h1>
 
-<form th:action="" th:method="post" th:object="">
+<form th:action="@{/enterprises}" th:method="post" th:object="${entercreate}">
     <label >NIT</label>
     <input th:field="*{nit}" type="number">
     <label >NAME</label>
@@ -21,7 +21,7 @@
     <input th:field="*{phone}" type="text">
     <label >ADDRESS</label>
     <input th:field="*{address}" type="text">
-    <button type="submit">Agregar</button>
+    <button type="submit">Agregar Enterprise</button>
 </form>
 
 

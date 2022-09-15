@@ -1,6 +1,7 @@
 package com.digitalsolution.digitalsolution.controllers;
 
 import com.digitalsolution.digitalsolution.entityes.Employee;
+import com.digitalsolution.digitalsolution.entityes.Enterprise;
 import com.digitalsolution.digitalsolution.entityes.Transaction;
 import com.digitalsolution.digitalsolution.services.EmployeeService;
 import com.digitalsolution.digitalsolution.services.TransactionService;
@@ -35,19 +36,43 @@ public class FrontController {
         return "transaction";
     }
 
-    @GetMapping("/transacti")//obtenre todoa
+    @GetMapping("/transacti")//obtenre todos pero se debe realizar solo para la empresa {enterprise}
     public String transationEnterprise(Model model){
         List<Transaction> transactionList = this.transactionService.obtenerTransaction();
         model.addAttribute("enterprise",transactionList);
         return "transaction";
     }
 
-    @GetMapping("/transaction/create")//crear transaccion
+    @GetMapping("/transaction/create")//crear transaccion o ingreso
     public String transactionCreate(Model model){
         model.addAttribute("transac", new Transaction());
 
         return "createtransaction";
     }
+
+    @GetMapping("/transaction/egreso")//crear egreso
+    public String transactionEgreso(Model model){
+        model.addAttribute("transae", new Transaction());
+
+        return "registroegreso";
+    }
+
+    @GetMapping("/enterprise/create")//crear empresa
+    public String enterpriseCreate(Model model){
+        model.addAttribute("entercreate", new Enterprise());
+
+        return "registroenter";
+    }
+
+    @GetMapping("/usercreate")//crear user
+    public String userCreate(Model model){
+        model.addAttribute("user", new Employee());
+
+        return "registrouser";
+    }
+
+
+
 
     @GetMapping( "/login")//es para login
     public String iniciarSesion( ){
@@ -60,14 +85,20 @@ public class FrontController {
 
     @PostMapping("/login")
     public String iniciarConten(@ModelAttribute(name = "inic") Employee employee, Model model){
+        
+        if (employee.getCedula() != 0 && employee.getContra() != ""){
+
             Optional<Employee> employee1 = this.employeeService.buscarEmployee(employee.getCedula());
 
         if (employee1.isPresent()){
+
                 if (employee1.get().getContra().equals(employee.getContra())){
                     model.addAttribute("hola", employee.getCedula());
                     System.out.println(employee.getCedula());
                     return "index";
-                }else{
+                }
+                
+                else{
                     model.addAttribute("error", "incorrect dat");
                     return "login";
                 }
@@ -78,5 +109,12 @@ public class FrontController {
             }
 
 
+
+        }else{
+            model.addAttribute("error", "incorrect dat");
+            return "login";
+        }
+        
     }
+
 }

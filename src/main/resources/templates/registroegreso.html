@@ -5,12 +5,13 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Create Transaction</title>
+    <title>Registro Egreso</title>
 </head>
 <body>
-    <h1>Ingreso</h1>
-<form th:action="@{/transaction}" th:method="post" th:object="${transac}">
 
+<h1>Egreso</h1>
+<form th:action="" th:method="post" th:object="">
+    
     <label >ID</label>
     <input th:field="*{idm}" type="number">
     <label >CONCEPT</label>
@@ -28,8 +29,7 @@
     <label >UPDATE DATE</label>
     <input th:field="*{updatedat}" type="date">
 
-    <button  type="submit">AGREGAR INGRESO</button>
-
+    <button type="submit">Agregar Egreso</button>
 </form>
 
 </body>
