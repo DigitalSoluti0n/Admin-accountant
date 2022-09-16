@@ -40,7 +40,7 @@ public class EnterpriseController {
         model.addAttribute(enterprise);
         this.enterpriseService.crearEnterprise(enterprise);
 
-        return new RedirectView("/transacti");
+        return new RedirectView("/");
 
     }
 

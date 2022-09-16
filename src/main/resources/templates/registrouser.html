@@ -10,23 +10,24 @@
 <body>
 
 <h1>USER</h1>
-<form th:action="" th:method="post" th:object="">
+
+<form th:action="@{/users}" th:method="post" th:object="${user}">
     <label>CEDULA</label>
-    <input th:field="cedula" type="number">
+    <input th:field="*{cedula}" type="number">
     <label>NAME</label>
-    <input th:field="name" type="text">
+    <input th:field="*{name}" type="text">
     <label>EMAIL</label>
-    <input th:field="email" type="text">
+    <input th:field="*{email}" type="text">
     <label>PROFILE</label>
-    <input th:field="profile" type="number">
+    <input th:field="*{profile}" type="number">
     <label>ROLE</label>
-    <input th:field="role" type="text">
+    <input th:field="*{role}" type="text">
     <label>ENTERPRISE</label>
-    <input th:field="enterprise" type="number">
+    <input th:field="*{enterprise}" type="number">
     <label>CONTRASEÑA</label>
-    <input th:field="contra" type="text">
+    <input th:field="*{contra}" type="text">
     <label>REPETIR CONTRASEÑA</label>
-    <input type="text">
+    <input th:filed="contrar" type="text">
 
     <button type="submit">Agregar User</button>
 </form>
