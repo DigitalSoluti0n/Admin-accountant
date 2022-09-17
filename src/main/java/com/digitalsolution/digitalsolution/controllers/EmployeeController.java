@@ -33,9 +33,16 @@ public class EmployeeController {
          * @return
          */
         @PostMapping("/users")
-        public boolean agregarEmployee(@RequestBody Employee employee){
+        public RedirectView agregarEmployee(@RequestParam(value = "contrat") String contra,  @ModelAttribute Employee employee, Model model){
 
-        return this.employeeService.crearEmployee(employee);
+         if (employee.getContra().equals(contra)){
+          if (this.employeeService.crearEmployee(employee)){
+
+           return new RedirectView("/");
+          }
+         }
+          model.addAttribute("erroru", "datos incorrectos");
+         return new RedirectView("/usercreate");
         }
 
         /**

@@ -12,6 +12,7 @@
 <h1>USER</h1>
 
 <form th:action="@{/users}" th:method="post" th:object="${user}">
+    <p th:if="${erroru}" th:text="${erroru}" >user&pass incorrect</p>
     <label>CEDULA</label>
     <input th:field="*{cedula}" type="number">
     <label>NAME</label>
@@ -27,7 +28,7 @@
     <label>CONTRASEÑA</label>
     <input th:field="*{contra}" type="text">
     <label>REPETIR CONTRASEÑA</label>
-    <input th:filed="contrar" type="text">
+    <input  th:name="contrat" type="text">
 
     <button type="submit">Agregar User</button>
 </form>

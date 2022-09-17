@@ -28,7 +28,7 @@ public class TransactionController {
     }
 
     /**
-     * El sistema permite crear una transacción
+     * El sistema permite crear una transacción de ingreso y egreso
      */
     @PostMapping("/transaction")//REQUESTBODY = MODELATTRIBUTE
     public RedirectView agregarTransaction(@ModelAttribute @DateTimeFormat(pattern = "YYYY-MM-DD") Transaction transaction, Model model){
@@ -38,6 +38,7 @@ public class TransactionController {
         return new RedirectView("/transacti");
 
     }
+
 
     /**
      * El sistema permite consultar una sola transacción

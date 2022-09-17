@@ -3,6 +3,7 @@ package com.digitalsolution.digitalsolution.services;
 import com.digitalsolution.digitalsolution.entityes.Employee;
 import com.digitalsolution.digitalsolution.repositories.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,6 +31,7 @@ public class EmployeeService {
      *
      * @return
      */
+    @Cacheable("persona")
     public Optional<Employee> buscarEmployee(long cedula){
 
         return this.employeeRepository.findById(cedula);

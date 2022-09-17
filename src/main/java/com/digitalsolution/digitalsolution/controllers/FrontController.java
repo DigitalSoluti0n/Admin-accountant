@@ -32,6 +32,9 @@ public class FrontController {
     @GetMapping("/transactionsf/{enterprise}")//consultar transaccion prar empresa
     public String transationEnterprise(@PathVariable("enterprise") Long enterprise, Model model){
         List<Transaction> transactionList = this.transactionService.obtenerTransactionEnterprise(enterprise);
+
+        transactionList.stream().forEach(System.out::println);
+
         model.addAttribute("enterprise",transactionList);
         return "transaction";
     }
@@ -50,7 +53,7 @@ public class FrontController {
         return "createtransaction";
     }
 
-    @GetMapping("/transaction/egreso")//crear egreso
+    @GetMapping("/transacti/egreso")//crear egreso
     public String transactionEgreso(Model model){
         model.addAttribute("transae", new Transaction());
 
@@ -93,8 +96,10 @@ public class FrontController {
         if (employee1.isPresent()){
 
                 if (employee1.get().getContra().equals(employee.getContra())){
-                    model.addAttribute("hola", employee.getCedula());
-                    System.out.println(employee.getCedula());
+
+
+                    model.addAttribute("hola", employee1.get().getEnterprise());
+
                     return "index";
                 }
                 
