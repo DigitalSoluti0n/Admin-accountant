@@ -37,10 +37,12 @@ public class EnterpriseController {
    @PostMapping("/enterprises")
     public RedirectView agregarEnterprise(@ModelAttribute @DateTimeFormat(pattern = "YYYY-MM-DD") Enterprise enterprise, Model model){
 
+        if(this.enterpriseService.crearEnterprise(enterprise)){
         model.addAttribute(enterprise);
-        this.enterpriseService.crearEnterprise(enterprise);
+        return new RedirectView("/usercreate");
+        }
 
-        return new RedirectView("/");
+        return new RedirectView("/enterprise/create");
 
     }
 

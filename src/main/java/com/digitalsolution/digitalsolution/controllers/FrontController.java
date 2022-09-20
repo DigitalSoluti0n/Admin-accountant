@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Controller
@@ -27,6 +28,14 @@ public class FrontController {
     public String inicio(Model model){
 
         return "index";
+    }
+
+    @GetMapping("/operacion")
+    public String operacion(@RequestParam Map<String, String> params, Model model){
+        model.addAttribute("user",params);
+        System.out.println(params.size());
+        return "operacion";
+        
     }
 
     @GetMapping("/transactionsf/{enterprise}")//consultar transaccion prar empresa
@@ -98,9 +107,10 @@ public class FrontController {
                 if (employee1.get().getContra().equals(employee.getContra())){
 
 
-                    model.addAttribute("hola", employee1.get().getEnterprise());
+                    model.addAttribute("enter", employee1.get().getEnterprise());//tomar decisión de acuerdo al rol
+                    model.addAttribute("hola", employee1.get().getName());//tomar decisión de acuerdo al rol
 
-                    return "index";
+                    return "operacion";
                 }
                 
                 else{
