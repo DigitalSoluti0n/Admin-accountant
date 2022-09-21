@@ -32,10 +32,10 @@ public class TransactionController {
      */
     @PostMapping("/transaction")//REQUESTBODY = MODELATTRIBUTE
     public RedirectView agregarTransaction(@ModelAttribute @DateTimeFormat(pattern = "YYYY-MM-DD") Transaction transaction, Model model){
-        model.addAttribute(transaction);
+        //model.addAttribute(transaction);
         this.transactionService.crearTransaction(transaction);
-
-        return new RedirectView("/transacti");
+     long cedula=   transaction.getUsuario();
+        return new RedirectView("/egreingreso/{"+cedula+"}");
 
     }
 

@@ -37,10 +37,8 @@ public class EmployeeController {
 
          if (employee.getContra().equals(contra)){
           if (this.employeeService.crearEmployee(employee)){
-                model.addAttribute("user", "employee.getName()");
                 
-                
-           return new RedirectView("/operacion");
+           return new RedirectView("/login");
           }
          }
           model.addAttribute("erroru", "datos incorrectos");//crear un front controller para enviar el error

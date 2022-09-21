@@ -7,9 +7,11 @@ import com.digitalsolution.digitalsolution.services.EmployeeService;
 import com.digitalsolution.digitalsolution.services.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
 import java.util.Map;
@@ -31,9 +33,8 @@ public class FrontController {
     }
 
     @GetMapping("/operacion")
-    public String operacion(@RequestParam Map<String, String> params, Model model){
-        model.addAttribute("user",params);
-        System.out.println(params.size());
+    public String operacion(){
+
         return "operacion";
         
     }
@@ -42,7 +43,7 @@ public class FrontController {
     public String transationEnterprise(@PathVariable("enterprise") Long enterprise, Model model){
         List<Transaction> transactionList = this.transactionService.obtenerTransactionEnterprise(enterprise);
 
-        transactionList.stream().forEach(System.out::println);
+//        transactionList.stream().forEach(System.out::println);
 
         model.addAttribute("enterprise",transactionList);
         return "transaction";
@@ -82,8 +83,51 @@ public class FrontController {
 
         return "registrouser";
     }
+    @PostMapping("/transactionse")//REQUESTBODY = MODELATTRIBUTE para crear la transacción ingreso o egreso
+    public String  agregarTransaction(@ModelAttribute @DateTimeFormat(pattern = "YYYY-MM-DD") Transaction transaction, Model model){
+     
+        this.transactionService.crearTransaction(transaction);
+     
+        Optional<Employee> emplo = this.employeeService.buscarEmployee(transaction.getUsuario());
+        List<Transaction> transactionList = this.transactionService.obtenerTransactionEnterprise(emplo.get().getEnterprise());
+
+        double total = 0.0;
+        for (Transaction transacti : transactionList) {
+            total+=transacti.getAmount();
+        }
 
 
+        model.addAttribute("total", total);
+        //if(emplo.isPresent()){
+            model.addAttribute("enterprise", transactionList);
+        //}
+
+           model.addAttribute("cedula", transaction.getUsuario());
+
+        return "egreingreso";
+
+    }
+
+    @GetMapping( "/egreingreso/{cedula}")//es para egreso e ingreso
+    public String adminEgreIngreso(@PathVariable("cedula") Long cedula, Model model ){
+
+        Optional<Employee> emplo = this.employeeService.buscarEmployee(cedula);
+        List<Transaction> transactionList = this.transactionService.obtenerTransactionEnterprise(emplo.get().getEnterprise());
+
+        double total = 0.0;
+        for (Transaction transaction : transactionList) {
+            total+=transaction.getAmount();
+        }
+
+        model.addAttribute("total", total);
+        //if(emplo.isPresent()){
+            model.addAttribute("enterprise", transactionList);
+        //}
+
+           model.addAttribute("cedula", cedula);
+
+        return "egreingreso";
+    }
 
 
     @GetMapping( "/login")//es para login
@@ -109,7 +153,8 @@ public class FrontController {
 
                     model.addAttribute("enter", employee1.get().getEnterprise());//tomar decisión de acuerdo al rol
                     model.addAttribute("hola", employee1.get().getName());//tomar decisión de acuerdo al rol
-
+                    model.addAttribute("cedula", employee1.get().getCedula());//tomar decisión de acuerdo al rol
+                    
                     return "operacion";
                 }
                 

@@ -31,7 +31,7 @@ public class EmployeeService {
      *
      * @return
      */
-    @Cacheable("persona")
+   // @Cacheable("persona")
     public Optional<Employee> buscarEmployee(long cedula){
 
         return this.employeeRepository.findById(cedula);
