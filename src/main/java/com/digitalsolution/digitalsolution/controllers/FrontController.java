@@ -20,6 +20,10 @@ import java.util.Optional;
 @Controller
 public class FrontController {
 
+    private long enterprise ;
+    private long cedula;
+    private  String nombre;
+
     @Autowired
     private TransactionService transactionService;
     @Autowired
@@ -43,9 +47,8 @@ public class FrontController {
     public String transationEnterprise(@PathVariable("enterprise") Long enterprise, Model model){
         List<Transaction> transactionList = this.transactionService.obtenerTransactionEnterprise(enterprise);
 
-//        transactionList.stream().forEach(System.out::println);
-
         model.addAttribute("enterprise",transactionList);
+
         return "transaction";
     }
 
@@ -59,14 +62,20 @@ public class FrontController {
     @GetMapping("/transaction/create")//crear transaccion o ingreso
     public String transactionCreate(Model model){
         model.addAttribute("transac", new Transaction());
-
+        model.addAttribute("cedula", cedula);
+        model.addAttribute("enterprise", enterprise);
+        model.addAttribute("hola", nombre);
+        //System.out.println(enterprise);
         return "createtransaction";
     }
 
     @GetMapping("/transacti/egreso")//crear egreso
     public String transactionEgreso(Model model){
         model.addAttribute("transae", new Transaction());
-
+       
+        model.addAttribute("cedula", cedula);
+        model.addAttribute("enterprise", enterprise);
+        model.addAttribute("hola", nombre);
         return "registroegreso";
     }
 
@@ -85,10 +94,13 @@ public class FrontController {
     }
     @PostMapping("/transactionse")//REQUESTBODY = MODELATTRIBUTE para crear la transacción ingreso o egreso
     public String  agregarTransaction(@ModelAttribute @DateTimeFormat(pattern = "YYYY-MM-DD") Transaction transaction, Model model){
-     
+        
+      //  System.out.println(enterprise);
+        transaction.setEnterprise(enterprise);
+        transaction.setUsuario(cedula);
         this.transactionService.crearTransaction(transaction);
      
-        Optional<Employee> emplo = this.employeeService.buscarEmployee(transaction.getUsuario());
+        Optional<Employee> emplo = this.employeeService.buscarEmployee(cedula);
         List<Transaction> transactionList = this.transactionService.obtenerTransactionEnterprise(emplo.get().getEnterprise());
 
         double total = 0.0;
@@ -121,10 +133,10 @@ public class FrontController {
 
         model.addAttribute("total", total);
         //if(emplo.isPresent()){
-            model.addAttribute("enterprise", transactionList);
+            model.addAttribute("ent", transactionList);
         //}
-
-           model.addAttribute("cedula", cedula);
+            model.addAttribute("hola", nombre);
+           model.addAttribute("ced", cedula);
 
         return "egreingreso";
     }
@@ -150,12 +162,33 @@ public class FrontController {
 
                 if (employee1.get().getContra().equals(employee.getContra())){
 
+                    List<Transaction> transactionList = this.transactionService.obtenerTransactionEnterprise(employee1.get().getEnterprise());
+            
+                    double total = 0.0;
+                    for (Transaction transaction : transactionList) {
+                        total+=transaction.getAmount();
+                    }
+            
+                    model.addAttribute("total", total);
+                    //if(emplo.isPresent()){
+                        model.addAttribute("enterprise", transactionList);
+                    //}
+            
+                     enterprise = employee1.get().getEnterprise();
+                    cedula = employee1.get().getCedula();
+                        nombre = employee1.get().getName();
 
                     model.addAttribute("enter", employee1.get().getEnterprise());//tomar decisión de acuerdo al rol
                     model.addAttribute("hola", employee1.get().getName());//tomar decisión de acuerdo al rol
                     model.addAttribute("cedula", employee1.get().getCedula());//tomar decisión de acuerdo al rol
+                    //System.out.println(employee1.get().getRole()); 
                     
-                    return "operacion";
+                    if(employee1.get().getRole().equals("administrador")){
+                        return "operacion";
+                    }else{
+                        return "egreingreso";
+                    }
+                    
                 }
                 
                 else{

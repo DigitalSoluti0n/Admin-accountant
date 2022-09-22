@@ -17,4 +17,5 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
     @Query("FROM Employee WHERE cedula = :cedula")
     List<Transaction> findByIdTransaction(@Param("cedula") Long cedula);
 
+
 }
