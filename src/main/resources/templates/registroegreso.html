@@ -36,8 +36,8 @@
       </nav>
 
 </header>
-<h1>Egreso</h1>
-
+<h1 class="text-center">Egreso</h1>
+<!--
 <form th:action="@{/transactionse}" th:method="post" th:object="${transae}">
 
     <label >ID</label>
@@ -58,61 +58,71 @@
     <input th:field="*{updatedat}" required type="date">
 
     <button type="submit">Agregar Egreso</button>
-</form>
+</form> -->
 
-<form class="row g-3 needs-validation" novalidate>
-  <div class="col-md-4 position-relative">
-    <label for="validationTooltip01" class="form-label">First name</label>
-    <input type="text" class="form-control" id="validationTooltip01" value="Mark" required>
-    <div class="valid-tooltip">
-      Looks good!
-    </div>
-  </div>
-  <div class="col-md-4 position-relative">
-    <label for="validationTooltip02" class="form-label">Last name</label>
-    <input type="text" class="form-control" id="validationTooltip02" value="Otto" required>
-    <div class="valid-tooltip">
-      Looks good!
-    </div>
-  </div>
-  <div class="col-md-4 position-relative">
-    <label for="validationTooltipUsername" class="form-label">Username</label>
-    <div class="input-group has-validation">
-      <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
-      <input type="text" class="form-control" id="validationTooltipUsername" aria-describedby="validationTooltipUsernamePrepend" required>
-      <div class="invalid-tooltip">
-        Please choose a unique and valid username.
-      </div>
-    </div>
-  </div>
-  <div class="col-md-6 position-relative">
-    <label for="validationTooltip03" class="form-label">City</label>
-    <input type="text" class="form-control" id="validationTooltip03" required>
-    <div class="invalid-tooltip">
-      Please provide a valid city.
-    </div>
-  </div>
-  <div class="col-md-3 position-relative">
-    <label for="validationTooltip04" class="form-label">State</label>
-    <select class="form-select" id="validationTooltip04" required>
-      <option selected disabled value="">Choose...</option>
-      <option>...</option>
-    </select>
-    <div class="invalid-tooltip">
-      Please select a valid state.
-    </div>
-  </div>
-  <div class="col-md-3 position-relative">
-    <label for="validationTooltip05" class="form-label">Zip</label>
-    <input type="text" class="form-control" id="validationTooltip05" required>
-    <div class="invalid-tooltip">
-      Please provide a valid zip.
-    </div>
-  </div>
-  <div class="col-12">
-    <button class="btn btn-primary" type="submit">Submit form</button>
-  </div>
-</form>
+<div class="container-fluid p-5">
+
+
+    <form th:action="@{/transactionse}" th:method="post" th:object="${transae}" class=" row g-3 needs-validation">
+
+        <div class="col-md-4 position-relative">
+            <label for="validationTooltipUsernam" class="form-label">ID</label>
+            <input th:field="*{idm}" type="number" class="form-control" placeholder="145782656" id="validationTooltipUsernam" required>
+            <div class="valid-tooltip">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-4 position-relative">
+            <label for="validationTooltip02" class="form-label">CONCEPT</label>
+            <input th:field="*{concept}" type="text" class="form-control" id="validationTooltip02" placeholder="Amazon" required>
+            <div class="valid-tooltip">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-4 position-relative">
+            <label for="validationTooltipUsername" class="form-label">AMOUNT</label>
+            <input th:field="*{amount}" type="number" class="form-control" placeholder="145782656" id="validationTooltipUsername" required>
+            <div class="valid-tooltip">
+                Looks good!
+            </div>
+        </div>
+
+        <div class="col-md-3 position-relative">
+            <label for="validationTooltip05" class="form-label">TYPE AMOUNT</label>
+
+            <select th:field="*{typeAmount}" class="form-select" id="validationTooltip05" required>
+                <option th:value="positivo">Positivo</option>
+                <option th:value="negativo">Negativo</option>
+            </select>
+
+            <!-- <input th:field="*{role}" type="text" class="form-control" placeholder="cra 45 # 11-14" id="validationTooltip05" required>-->
+            <div class="valid-tooltip">
+                Looks good!
+            </div>
+        </div>
+
+
+        <div class="col-md-3 position-relative">
+            <label for="validationTooltip0" class="form-label">CREATE DATE</label>
+            <input th:field="*{createdat}" type="date" class="form-control"  id="validationTooltip0" required>
+            <div class="valid-tooltip">
+                Looks good!
+            </div>
+        </div>
+
+        <div class="col-md-3 position-relative">
+            <label for="validationToolti" class="form-label">UPDATE DATE</label>
+            <input th:field="*{updatedat}" type="date" class="form-control"  id="validationToolti" required>
+            <div class="valid-tooltip">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-12 text-center">
+            <button class="btn btn-primary " type="submit">Agregar Egreso</button>
+        </div>
+    </form>
+</div>
+
 
 
 

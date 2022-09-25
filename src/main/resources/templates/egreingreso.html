@@ -51,7 +51,7 @@
             </div>
           </nav>
 
-<h1 th:text="${cedula}" ></h1>
+<!--<h1 th:text="${cedula}" ></h1>-->
 <!--
         <form th:action="@{/transactionsf/{enterprise} (enterprise=${enter}) }" th:method="get">
 
@@ -60,6 +60,7 @@
         </form>
 
 -->
+        <!--
         <table>
             <thead>
             <tr>
@@ -73,7 +74,7 @@
                 <td>Update Date</td>
             </tr>
             </thead>
-        
+
             <tbody>
             <tr th:each ="enterpris : ${enterprise}" >
                 <td th:text="${enterpris.idm}"></td>
@@ -89,8 +90,53 @@
         </table>
 
        <p>Total: <span th:text="${total}" ></span> </p>
+-->
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+        <div class="container-fluid p-5">
+
+
+            <div class="table-responsive-sm">
+                <table class="table">
+                    <thead class="table-dark">
+                    <tr>
+                        <td>ID</td>
+                        <td>Concept</td>
+                        <td>Amount</td>
+                        <td>Type Amount</td>
+                        <td>User</td>
+                        <td>Enterprise</td>
+                        <td>Create Date</td>
+                        <td>Update Date</td>
+
+
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr th:each ="enterpris : ${ent}" >
+                        <td th:text="${enterpris.idm}"></td>
+                        <td th:text="${enterpris.concept}"></td>
+                        <td th:text="${enterpris.amount}"></td>
+                        <td th:text="${enterpris.typeAmount}"></td>
+                        <td th:text="${enterpris.usuario}"></td>
+                        <td th:text="${enterpris.enterprise}"></td>
+                        <td th:text="${enterpris.createdat}"></td>
+                        <td th:text="${enterpris.updatedat}" ></td>
+                    </tr>
+
+                    <tr class="table-info">
+                        <td colspan="2">TOTAL</td>
+                        <td th:text="${total}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>

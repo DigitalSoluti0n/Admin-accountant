@@ -4,6 +4,7 @@ import com.digitalsolution.digitalsolution.entityes.Employee;
 import com.digitalsolution.digitalsolution.entityes.Enterprise;
 import com.digitalsolution.digitalsolution.entityes.Transaction;
 import com.digitalsolution.digitalsolution.services.EmployeeService;
+import com.digitalsolution.digitalsolution.services.EnterpriseService;
 import com.digitalsolution.digitalsolution.services.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
@@ -29,6 +30,8 @@ public class FrontController {
     @Autowired
     private EmployeeService    employeeService;
 
+    @Autowired
+    private EnterpriseService enterpriseService;
 
     @GetMapping("/")//index
     public String inicio(Model model){
@@ -99,7 +102,7 @@ public class FrontController {
         transaction.setEnterprise(enterprise);
         transaction.setUsuario(cedula);
         this.transactionService.crearTransaction(transaction);
-     
+       /// System.out.println(cedula);
         Optional<Employee> emplo = this.employeeService.buscarEmployee(cedula);
         List<Transaction> transactionList = this.transactionService.obtenerTransactionEnterprise(emplo.get().getEnterprise());
 
@@ -111,7 +114,7 @@ public class FrontController {
 
         model.addAttribute("total", total);
         //if(emplo.isPresent()){
-            model.addAttribute("enterprise", transactionList);
+            model.addAttribute("ent", transactionList);
         //}
 
            model.addAttribute("cedula", transaction.getUsuario());
@@ -150,6 +153,41 @@ public class FrontController {
         return "login";
     }
 
+    /**
+     * El sistema permite crear una empresa
+     */
+    @PostMapping("/enterprisesf")
+    public RedirectView agregarEnterprise(@ModelAttribute @DateTimeFormat(pattern = "YYYY-MM-DD") Enterprise enterprise, Model model){
+
+        if(this.enterpriseService.crearEnterprise(enterprise)){
+            this.enterprise = enterprise.getNit();
+            System.out.println(enterprise.getNit());
+            model.addAttribute("ent",enterprise);
+            return new RedirectView("/usercreate");
+        }
+
+        return new RedirectView("/enterprise/create");
+
+    }
+
+    /**
+     * El sistema permite crear un usuario
+     *
+     * @return
+     */
+    @PostMapping("/usersf")
+    public RedirectView agregarEmployee(@RequestParam(value = "contrat") String contra,  @ModelAttribute Employee employee, Model model){
+
+        employee.setEnterprise(enterprise);
+        if (employee.getContra().equals(contra)){
+            if (this.employeeService.crearEmployee(employee)){
+
+                return new RedirectView("/login");
+            }
+        }
+        model.addAttribute("erroru", "datos incorrectos");//crear un front controller para enviar el error
+        return new RedirectView("/usercreate");
+    }
 
     @PostMapping("/login")
     public String iniciarConten(@ModelAttribute(name = "inic") Employee employee, Model model){
@@ -173,6 +211,8 @@ public class FrontController {
                     //if(emplo.isPresent()){
                         model.addAttribute("enterprise", transactionList);
                     //}
+
+
             
                      enterprise = employee1.get().getEnterprise();
                     cedula = employee1.get().getCedula();

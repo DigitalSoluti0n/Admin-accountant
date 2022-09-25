@@ -33,10 +33,10 @@
         </nav>
         </header>
 
-<h1>USER</h1>
-
+<h1 class="text-center">USER</h1>
+<!--
 <form th:action="@{/users}" th:method="post" th:object="${user}">
-    <p th:if="${erroru}" th:text="${erroru}" >user&pass incorrect</p>
+   <p th:if="${erroru}" th:text="${erroru}" >user&pass incorrect</p>
     <label>CEDULA</label>
     <input th:field="*{cedula}" required type="number">
     <label>NAME</label>
@@ -56,6 +56,94 @@
 
     <button type="submit">Agregar User</button>
 </form>
+-->
+
+    <div class="container-fluid p-5">
+
+
+        <form th:action="@{/usersf}" th:method="post" th:object="${user}" class=" row g-3 needs-validation">
+
+            <p th:if="${erroru}" th:text="${erroru}" >user&pass incorrect</p>
+
+            <div class="col-md-4 position-relative">
+                <label for="validationTooltipUsernam" class="form-label">CEDULA</label>
+                <input th:field="*{cedula}" type="number" class="form-control" placeholder="145782656" id="validationTooltipUsernam" required>
+                <div class="valid-tooltip">
+                    Looks good!
+                </div>
+            </div>
+            <div class="col-md-4 position-relative">
+                <label for="validationTooltip02" class="form-label">NAME</label>
+                <input th:field="*{name}" type="text" class="form-control" id="validationTooltip02" placeholder="Amazon" required>
+                <div class="valid-tooltip">
+                    Looks good!
+                </div>
+            </div>
+            <div class="col-md-4 position-relative">
+                <label for="validationTooltipUsername" class="form-label">EMAIL</label>
+                <input th:field="*{email}" type="email" class="form-control" placeholder="145782656" id="validationTooltipUsername" required>
+                <div class="valid-tooltip">
+                    Looks good!
+                </div>
+            </div>
+            <div class="col-md-6 position-relative">
+                <label for="validationTooltip03" class="form-label">PROFILE</label>
+                <input th:field="*{profile}" type="number" class="form-control" placeholder="74589212" id="validationTooltip03" required>
+                <div class="valid-tooltip">
+                    Looks good!
+                </div>
+            </div>
+            <!-- <div class="col-md-3 position-relative">
+                <label for="validationTooltip04" class="form-label">State</label>
+                <select class="form-select" id="validationTooltip04" required>
+                    <option selected disabled value="">Choose...</option>
+                    <option>...</option>
+                </select>
+                <div class="invalid-tooltip">
+                    Please select a valid state.
+                </div>
+            </div> -->
+            <div class="col-md-3 position-relative">
+                <label for="validationTooltip05" class="form-label">ROLE</label>
+
+                <select th:field="*{role}" class="form-select" id="validationTooltip05" required>
+                    <option th:value="operario">Operario</option>
+                    <option th:value="administrador">Administrador</option>
+                </select>
+
+               <!-- <input th:field="*{role}" type="text" class="form-control" placeholder="cra 45 # 11-14" id="validationTooltip05" required>-->
+                <div class="valid-tooltip">
+                    Looks good!
+                </div>
+            </div>
+
+            <div class="col-md-3 position-relative">
+                <label for="validationTooltip0" class="form-label">ENTERPRISE</label>
+                <input th:field="*{enterprise}" type="text" class="form-control" placeholder="0" id="validationTooltip0" disabled>
+                <div class="valid-tooltip">
+                    Looks good!
+                </div>
+            </div>
+
+            <div class="col-md-3 position-relative">
+                <label for="validationTooltip" class="form-label">CONTRASEÑA</label>
+                <input th:field="*{contra}" type="password" class="form-control" placeholder="*************" id="validationTooltip" required>
+                <div class="valid-tooltip">
+                    Looks good!
+                </div>
+            </div>
+            <div class="col-md-3 position-relative">
+                <label for="validationToolti" class="form-label">REPETIR CONTRASEÑA</label>
+                <input th:name="contrat" type="password" class="form-control" placeholder="********************" id="validationToolti" required>
+                <div class="valid-tooltip">
+                    Looks good!
+                </div>
+            </div>
+            <div class="col-12 text-center">
+                <button class="btn btn-primary " type="submit">Agregar Enterprise</button>
+            </div>
+        </form>
+    </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 
