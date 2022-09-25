@@ -14,7 +14,7 @@
 	<name>digitalsolution</name>
 	<description>Aplicativo web para gestionar los ingresos y egresos de una empresa</description>
 	<properties>
-		<java.version>10</java.version><!--17-->
+		<java.version>17</java.version><!--17-->
 	</properties>
 	<dependencies>
 		<dependency>
