@@ -3,7 +3,11 @@ package com.digitalsolution.digitalsolution.controllers;
 
 import com.digitalsolution.digitalsolution.entityes.Enterprise;
 import com.digitalsolution.digitalsolution.services.EnterpriseService;
+
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
 import java.util.Optional;
@@ -31,9 +35,15 @@ public class EnterpriseController {
     * El sistema permite crear una empresa
     */
    @PostMapping("/enterprises")
-    public boolean agregarEnterprise(@RequestBody Enterprise enterprise){
+    public RedirectView agregarEnterprise(@ModelAttribute @DateTimeFormat(pattern = "YYYY-MM-DD") Enterprise enterprise, Model model){
 
-       return this.enterpriseService.crearEnterprise(enterprise);
+        if(this.enterpriseService.crearEnterprise(enterprise)){
+        model.addAttribute(enterprise);
+        return new RedirectView("/usercreate");
+        }
+
+        return new RedirectView("/enterprise/create");
+
     }
 
     /**

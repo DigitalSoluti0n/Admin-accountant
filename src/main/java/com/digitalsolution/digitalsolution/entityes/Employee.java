@@ -42,6 +42,11 @@ public class Employee {
     @Getter @Setter
     private long enterprise;
 
+    @Column(name = "contra")
+    @Getter @Setter
+    private String contra;
+
+    /*
     @Column(name = "transactions")
     @Getter @Setter
     private long transactions;
@@ -53,6 +58,8 @@ public class Employee {
     @Column(name = "createdat")
     @Getter @Setter
     private LocalDate createdat;
+
+     */
 
 
 }

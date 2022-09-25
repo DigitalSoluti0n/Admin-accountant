@@ -33,9 +33,13 @@ public class Enterprise {
     @Column(name = "address")
     @Getter @Setter
     private String address;
+
+    /*
+
     @Column(name = "users")
     @Getter @Setter
     private long users;
+
     @Column(name = "transactions")
     @Getter @Setter
     private long transactions;
@@ -45,6 +49,8 @@ public class Enterprise {
     @Column(name = "updatedat")
     @Getter @Setter
     private LocalDate updatedat;
+
+     */
 }
 
 

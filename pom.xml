@@ -14,7 +14,7 @@
 	<name>digitalsolution</name>
 	<description>Aplicativo web para gestionar los ingresos y egresos de una empresa</description>
 	<properties>
-		<java.version>17</java.version>
+		<java.version>10</java.version><!--17-->
 	</properties>
 	<dependencies>
 		<dependency>
@@ -25,6 +25,14 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+
+<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-devtools -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-devtools</artifactId>
+    <version>2.7.3</version>
+</dependency>
+
 
 		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
 		<dependency>
@@ -54,6 +62,15 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-cache -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-cache</artifactId>
+			<version>2.7.3</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
